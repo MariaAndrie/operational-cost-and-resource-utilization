@@ -2,18 +2,20 @@
 
 ## Overview
 
-This project analyzes operational cost, budget variance, resource utilization, overtime, and cost drivers in an IT Operations environment.
+This project analyzes operational cost, budget variance, resource utilization, overtime, and cost drivers in a synthetic IT Operations environment.
 
-The goal is to show how SQL and Power BI can support cost control, capacity planning, and operational efficiency decisions.
+The dashboard focuses on **2025 performance compared with 2024** and shows how cost pressure increased while staffing capacity remained broadly flat.
 
-**Status:** SQL analysis completed. Power BI dashboard in progress.
+## Dashboard Preview
+
+![Dashboard Preview](images/operational_cost_resource_dashboard.png)
 
 ## Business Questions
 
-- Are teams operating within budget?
-- Which cost categories are driving cost overruns?
-- How did 2025 performance compare with 2024?
+- Are operating costs within budget?
+- Which cost categories drive the budget overrun?
 - Are higher costs connected to resource pressure and overtime?
+- Which teams show the clearest utilization pressure?
 - Where should management focus cost control and capacity planning?
 
 ## Tools
@@ -30,64 +32,60 @@ Main tables used:
 - `fact_cost_details`
 - `fact_capacity`
 - `fact_tickets`
+- `dim_date`
 - `dim_team`
 - `dim_region`
-- `dim_date`
+- `dim_service`
 
-The dataset covers **2024–2025** and represents a synthetic IT Operations environment.
+The dataset covers **2024–2025** and represents an IT Operations environment with cost, capacity, and ticket activity data.
 
-## SQL Work Completed
+## Power BI Dashboard
 
-Files:
+The Power BI report is a one-page executive dashboard:
 
-- `sql/03_data_quality_checks.sql`
-- `sql/04_business_logic_validation.sql`
-- `sql/05_cost_kpi_analysis.sql`
+**Executive Cost Overview**
 
-Completed SQL work includes:
+Main dashboard sections:
 
-- Data quality checks
-- Cost and capacity validation
-- Budget vs actual analysis
-- Resource utilization checks
-- Overtime analysis
-- Cost category analysis
-- 2025 vs 2024 KPI comparison
+- 2025 KPI cards with comparison vs 2024
+- Budget vs actual cost trend
+- Budget variance by cost category
+- Resource utilization by team and month
+- Overtime trend
+
+Dashboard story:
+
+> 2025 cost pressure increased as overtime rose sharply while staffing remained flat.
 
 ## Key KPIs
-
-- Total Budget
-- Total Actual Cost
-- Budget Variance
-- Budget Variance Rate
-- Resource Utilization Rate
-- Overtime Hours
-- Overtime Rate
-- Average FTE
-- Cost Category Variance
-
-## Key Findings from SQL Analysis
 
 | KPI | 2024 | 2025 |
 |---|---:|---:|
 | Total Budget | 38.62M | 38.73M |
-| Total Actual Cost | 39.03M | 40.21M |
+| Actual Cost | 39.03M | 40.21M |
 | Budget Variance | 410.29K | 1.47M |
-| Budget Variance Rate | 1.06% | 3.80% |
-| Utilization Rate | 87.78% | 88.20% |
-| Overtime Hours | 1,917.1 | 8,736.6 |
+| Budget Variance % | 1.06% | 3.80% |
+| Resource Utilization % | 87.78% | 88.20% |
+| Overtime Hours | 1.92K | 8.74K |
 | Overtime Rate | 0.24% | 1.10% |
 
-Main observations:
+## Key Findings
 
-- 2025 shows significantly higher cost pressure than 2024.
-- Budget variance increased from **410.29K** to **1.47M**.
-- Overtime hours increased more than four times while average FTE stayed almost flat.
-- Salary was the largest absolute cost variance driver.
-- Software had the highest relative variance rate in 2025.
-- Contractor costs were the second-largest cost variance driver.
+- Actual cost exceeded budget by **$1.47M** in 2025.
+- Budget variance increased from **$410.29K in 2024** to **$1.47M in 2025**.
+- Overtime hours increased from **1.92K** to **8.74K**.
+- Network Operations showed the clearest resource pressure, especially during May-August.
+- Salary was the largest absolute budget variance driver.
+- Contractors and software added further cost pressure.
 
-## 2025 Cost Category Summary
+## Recommended Actions
+
+- Review Network Operations capacity during May–August, where utilization exceeded 100% and overtime increased.
+- Monitor contractor and software costs as secondary drivers of the 2025 budget overrun.
+- Use overtime and utilization trends as early indicators for capacity planning and cost control.
+
+
+## 2025 Cost Category Variance
 
 | Cost Category | Budget Variance | Variance Rate |
 |---|---:|---:|
@@ -97,16 +95,24 @@ Main observations:
 | Training | 52.73K | 3.41% |
 | Travel | 44.73K | 3.84% |
 
-## Power BI Dashboard
+## SQL Work Completed
 
-Power BI dashboard is currently in progress.
+SQL files:
 
-Planned pages:
+- `sql/03_data_quality_checks.sql`
+- `sql/04_business_logic_validation.sql`
+- `sql/05_cost_kpi_analysis.sql`
 
-1. Executive Cost Overview
-2. Resource Utilization
-3. Cost Drivers
-4. Team / Region Efficiency
+SQL work includes:
+
+- Data quality checks
+- Cost and capacity validation
+- Budget vs actual analysis
+- Resource utilization checks
+- Overtime analysis
+- Cost category variance analysis
+- 2025 vs 2024 KPI comparison
+
 
 ## Project Structure
 
@@ -116,7 +122,8 @@ operational-cost-resource-utilization-analysis/
 ├── data/
 │   ├── dim_date.csv
 │   ├── fact_tickets.csv
-│   ├── fact_csat.csv
+│   ├── fact_capacity.csv
+│   ├── fact_costs.csv
 │   └── ...
 │
 ├── sql/
@@ -128,8 +135,7 @@ operational-cost-resource-utilization-analysis/
 │   └── Operational_Cost_Resource_Utilization.pbix
 │
 ├── images/
-│   ├── one.png
-│   └── two.png
+│   └── operational_cost_resource_dashboard.png
 │
 └── README.md
 ```
@@ -143,4 +149,4 @@ This project demonstrates practical Operations Analytics skills:
 - Budget variance analysis
 - Resource utilization analysis
 - Capacity and overtime analysis
-- KPI preparation for Power BI reporting
+- Power BI executive dashboard design
