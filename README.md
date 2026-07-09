@@ -8,7 +8,7 @@ The dashboard focuses on **2025 performance compared with 2024** and shows how c
 
 ## Dashboard Preview
 
-![Dashboard Preview](images/operational_cost_resource_dashboard.png)
+![Dashboard Preview](images/operational_cost_and_resource_utilization.png)
 
 ## Business Questions
 
@@ -135,7 +135,7 @@ operational-cost-resource-utilization-analysis/
 │   └── Operational_Cost_Resource_Utilization.pbix
 │
 ├── images/
-│   └── operational_cost_resource_dashboard.png
+│   └── operational_cost_and_resource_utilization.png
 │
 └── README.md
 ```
